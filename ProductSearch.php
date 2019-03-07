@@ -402,7 +402,7 @@
                 handler(serverResponse);
             }
         }
-        xhttp.open('GET', './index.php?server=true&' + query);
+        xhttp.open('GET', './ProductSearch.php?server=true&' + query);
         xhttp.send(); 
     }
 
@@ -455,6 +455,7 @@
                     th = document.createElement('th');
                     th.innerHTML = headers[i];
                     th.style.border = '1px solid gray';
+                    th.style.padding = '0 2px';
                     headerRow.appendChild(th);
                 }
                 table.appendChild(headerRow);
@@ -601,6 +602,7 @@
                     btn.style.backgroundPosition = 'center';
                     btn.style.backgroundSize = 'contain';
                     btn.style.backgroundRepeat = 'no-repeat';
+                    btn.style.backgroundColor = "transparent";
                     btn.style.width = '50px';
                     btn.style.height = '40px';
                     btn.style.border = 'none';
