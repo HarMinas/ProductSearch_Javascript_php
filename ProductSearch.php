@@ -402,7 +402,7 @@
                 handler(serverResponse);
             }
         }
-        xhttp.open('GET', './ProductSearch.php?server=true&' + query);
+        xhttp.open('GET', './index.php?server=true&' + query);
         xhttp.send(); 
     }
 
@@ -863,7 +863,8 @@
     }
 ///Clearing Page
     function clearPage(){
-        document.location.reload();
+        
+        body.reload(true);
     }
 
     </script>
@@ -881,7 +882,7 @@
 
     <!-- This is where the form starts -->
             <div class="form-container">
-                <form name="firstForm" class="main-form" >
+                <form name="firstForm" class="main-form"  >
 
                     <div class="row">
                         <label class="label"  for="keyword">Keyword</label>
