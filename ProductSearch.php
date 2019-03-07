@@ -273,7 +273,7 @@
 
         getLocation();
     }
-
+    
     //Fetching the location of the user
     function getLocation(){
             let xhttp;
@@ -352,21 +352,27 @@
     /* Checks if zipcode value is correct and updates the submitInfo.zip if necessary.
         Returns true if the check is successfull and false if its fails. */
     function checkFields(){
-        if( inputs.zip.checked){
-            let zipPattern = /^\d{5}$/;
-            let zipCode = inputs.zipCode.value;
-            // if (inputs.zipCode.value.match(zipPattern)){
-            if (zipPattern.test(zipCode)){
-                submitInfo.zip = zipCode;
-                return true;
+        if(inputs.localSearch.checked){
+                if( inputs.zip.checked){
+                let zipPattern = /^\d{5}$/;
+                let zipCode = inputs.zipCode.value;
+                // if (inputs.zipCode.value.match(zipPattern)){
+                if (zipPattern.test(zipCode)){
+                    submitInfo.zip = zipCode;
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }else {
+                submitInfo.zip = submitInfo.currentLoc;
+                return true
             }
-            else{
-                return false;
-            }
-        }else {
+        }else{
             submitInfo.zip = submitInfo.currentLoc;
             return true
         }
+        
     }
     /* Checks if the distance is positive and an integer*/
     function checkDistance(){
@@ -402,7 +408,7 @@
                 handler(serverResponse);
             }
         }
-        xhttp.open('GET', './index.php?server=true&' + query);
+        xhttp.open('GET', './ProductSearch.php?server=true&' + query);
         xhttp.send(); 
     }
 
@@ -863,8 +869,10 @@
     }
 ///Clearing Page
     function clearPage(){
-        
-        body.reload(true);
+        inputs.form.reset();
+        while(results.firstChild){
+            results.removeChild(results.firstChild);
+        }
     }
 
     </script>
@@ -882,7 +890,7 @@
 
     <!-- This is where the form starts -->
             <div class="form-container">
-                <form name="firstForm" class="main-form"  >
+                <form name="firstForm" class="main-form" >
 
                     <div class="row">
                         <label class="label"  for="keyword">Keyword</label>
