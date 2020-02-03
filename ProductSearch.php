@@ -76,6 +76,8 @@
 
 
                 $condition = array("new"=>$_GET['new'],"used"=>$_GET['used'], "unspecified"=>$_GET['unspecified']);
+
+                
                 $query .="&itemFilter({$itemFilter}).name=Condition";
                 if($condition["new"]=='true'){
                     $query .= "&itemFilter({$itemFilter}).value({$valueFilter})=New";
@@ -513,7 +515,7 @@
                     }
                 item[5] = p;     
                     p = document.createElement('p');
-                    shippingVal = items[i].shippingInfo[0].shippingServiceCost[0].__value__;
+                    s
                     if(shippingVal==0){
                         p.innerHTML = "Free Shipping";
                     }else{
